@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cafe Chick Chick Menu</title>
+
+<style>
+body{
+font-family: Arial, sans-serif;
+background:#f5f5f5;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+margin:0;
+}
+
+.container{
+text-align:center;
+background:white;
+padding:30px;
+border-radius:10px;
+box-shadow:0 5px 15px rgba(0,0,0,0.1);
+}
+
+h1{
+margin-bottom:20px;
+}
+
+.lang{
+display:block;
+margin:10px;
+padding:15px;
+font-size:18px;
+border:none;
+border-radius:8px;
+cursor:pointer;
+background:#ff6b3d;
+color:white;
+width:200px;
+}
+
+.lang:hover{
+background:#e55a30;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Select Language</h1>
+
+<button class="lang" onclick="openMenu('menu_en.pdf')">English</button>
+<button class="lang" onclick="openMenu('menu_vi.pdf')">Tiếng Việt</button>
+<button class="lang" onclick="openMenu('menu_ko.pdf')">한국어</button>
+<button class="lang" onclick="openMenu('menu_ru.pdf')">Русский</button>
+<button class="lang" onclick="openMenu('menu_zh.pdf')">中文</button>
+
+</div>
+
+<script>
+
+function openMenu(file){
+window.location.href = file
+}
+
+</script>
+
+</body>
+</html>
