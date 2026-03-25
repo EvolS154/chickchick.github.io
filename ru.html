@@ -1,0 +1,1214 @@
+<!DOCTYPE html>
+
+<html lang="ru">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Меню</title>
+<style>
+@page {
+  size: A4 portrait;
+  margin: 0;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: "Georgia", "Times New Roman", serif;
+  color: #2f2920;
+  background: #f7f0cf;
+}
+
+.page {
+  width: 210mm;
+  min-height: 297mm;
+  padding: 11mm 11mm 9mm 11mm;
+  page-break-after: always;
+  position: relative;
+  background:
+    radial-gradient(circle at top left, rgba(215, 155, 30, 0.10), transparent 28%),
+    radial-gradient(circle at bottom right, rgba(215, 155, 30, 0.08), transparent 25%),
+    #f7f0cf;
+}
+
+.page:last-child { page-break-after: auto; }
+
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8mm;
+  margin-bottom: 4mm;
+  min-height: 44mm;
+}
+
+.hero-copy { flex: 1.1; }
+.hero-visual { flex: 0.9; display:flex; justify-content:flex-end; }
+
+.eyebrow, .page-kicker {
+  font-family: Arial, Helvetica, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-size: 8pt;
+  color: #9a7424;
+  margin-bottom: 1.8mm;
+  font-weight: 700;
+}
+
+.hero h1, .page-title {
+  margin: 0;
+  font-size: 24pt;
+  line-height: 1;
+  color: #d5960f;
+  font-weight: 700;
+}
+
+.hero p, .page-subtitle {
+  margin: 1.8mm 0 0 0;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 10.7pt;
+  line-height: 1.2;
+  color: #4a4237;
+}
+
+.hero-note, .page-note, .section-subtitle {
+  margin-top: 1.5mm;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 8.4pt;
+  line-height: 1.28;
+  color: #6c614f;
+  max-width: 98%;
+}
+
+.hero-img {
+  width: 72mm;
+  height: 46mm;
+  object-fit: cover;
+  border-radius: 16px;
+  border: 1px solid rgba(154, 116, 36, 0.16);
+  box-shadow: 0 8px 20px rgba(65, 47, 11, 0.16);
+  background: #fff;
+}
+
+.page-top {
+  display:flex;
+  justify-content: space-between;
+  align-items:flex-start;
+  gap: 6mm;
+  margin-bottom: 4mm;
+}
+.page-top > div:first-child { flex: 1; }
+.page-hero-strip {
+  display: flex;
+  gap: 2.5mm;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: nowrap;
+  flex: 0.8;
+}
+
+.small-hero {
+  width: 22mm;
+  height: 22mm;
+  border-radius: 999px;
+  overflow: hidden;
+  border: 1px solid rgba(154, 116, 36, 0.18);
+  box-shadow: 0 5px 14px rgba(65, 47, 11, 0.10);
+  background: #fff;
+}
+.small-hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.section-head {
+  display:flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin: 0 0 2.6mm 0;
+  padding-bottom: 1.7mm;
+  border-bottom: 1px solid rgba(154,116,36,0.18);
+}
+.section-title {
+  font-size: 12pt;
+  font-weight: 700;
+  color: #4a4237;
+}
+.section-subtitle {
+  margin: 0;
+  text-align:right;
+}
+
+.group-title {
+  font-family: Arial, Helvetica, sans-serif;
+  text-transform: uppercase;
+  font-size: 8pt;
+  letter-spacing: 0.14em;
+  color: #9a7424;
+  font-weight: 700;
+  margin: 2mm 0 1.6mm 0;
+}
+
+.grid {
+  display: grid;
+  gap: 2.5mm;
+  grid-auto-rows: 1fr;
+}
+.grid-2 { grid-template-columns: repeat(2, 1fr); }
+.grid-3 { grid-template-columns: repeat(3, 1fr); }
+
+.card {
+  position: relative;
+  background: rgba(255,255,255,0.76);
+  border: 1px solid rgba(154, 116, 36, 0.16);
+  border-radius: 12px;
+  padding: 3mm 3mm 2.8mm 3mm;
+  box-shadow: 0 5px 15px rgba(48, 37, 10, 0.07);
+  min-height: 34mm;
+  overflow: hidden;
+}
+
+.card .badge {
+  position: absolute;
+  right: 2.5mm;
+  top: 2.5mm;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 6.6pt;
+  line-height: 1;
+  padding: 1.1mm 2.2mm;
+  border-radius: 999px;
+  background: #f2d37d;
+  color: #5f4617;
+  font-weight: 700;
+  max-width: 48%;
+  text-align: right;
+}
+
+.card-image {
+  width: 100%;
+  height: 18mm;
+  margin-bottom: 1.8mm;
+}
+.card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 9px;
+}
+
+.card-text { padding-top: 0.1mm; }
+
+.eng {
+  font-size: 11.2pt;
+  line-height: 1.08;
+  font-weight: 700;
+  color: #2f2920;
+  margin-bottom: 0.9mm;
+}
+.vn {
+  font-size: 8.9pt;
+  line-height: 1.12;
+  color: #52483b;
+  margin-bottom: 1.1mm;
+}
+.note {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 7.6pt;
+  color: #746651;
+  line-height: 1.15;
+  margin-bottom: 1mm;
+}
+.price {
+  font-size: 11.8pt;
+  line-height: 1.05;
+  color: #000;
+  font-weight: 700;
+}
+
+.footer {
+  position: absolute;
+  left: 11mm;
+  right: 11mm;
+  bottom: 7mm;
+  display:flex;
+  justify-content: space-between;
+  align-items:center;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 8pt;
+  color: #867867;
+  padding-top: 1.8mm;
+  border-top: 1px solid rgba(154,116,36,0.18);
+}
+
+@media print {
+  .page { page-break-after: always; }
+}
+</style>
+<style>
+body {
+  padding-bottom: 24px;
+  overflow-x: hidden;
+}
+
+.page {
+  width: min(100%, 1200px) !important;
+  min-height: auto !important;
+  margin: 0 auto 18px !important;
+  padding: 18px !important;
+  page-break-after: always;
+}
+
+.hero,
+.page-top {
+  gap: 16px;
+}
+
+.hero-img {
+  width: min(100%, 420px) !important;
+  height: auto !important;
+}
+
+.small-hero {
+  width: 72px !important;
+  height: 72px !important;
+}
+
+.card {
+  min-height: auto !important;
+}
+
+.card-image {
+  height: auto !important;
+}
+
+.card-img {
+  width: 100%;
+  height: auto;
+}
+
+@media (max-width: 900px) {
+  .hero,
+  .page-top {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .hero-visual,
+  .page-hero-strip {
+    justify-content: flex-start;
+  }
+
+  .grid-2,
+  .grid-3 {
+    grid-template-columns: 1fr !important;
+  }
+
+  .card {
+    padding: 14px !important;
+  }
+
+  .footer {
+    position: static !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    margin-top: 16px;
+  }
+
+  .page {
+    padding: 14px !important;
+  }
+
+  .hero-img {
+    max-width: 100%;
+  }
+}
+
+@media print {
+  body {
+    padding: 0;
+    overflow: visible;
+  }
+
+  .page {
+    width: 210mm !important;
+    min-height: 297mm !important;
+    margin: 0 !important;
+    padding: 11mm 11mm 9mm 11mm !important;
+    page-break-after: always;
+  }
+
+  .footer {
+    position: absolute !important;
+    left: 11mm !important;
+    right: 11mm !important;
+    bottom: 7mm !important;
+  }
+
+  .grid-2 { grid-template-columns: repeat(2, 1fr) !important; }
+  .grid-3 { grid-template-columns: repeat(3, 1fr) !important; }
+}
+</style>
+
+<style>
+/* Mobile layout + image consistency */
+.card {
+  display: flex;
+  flex-direction: column;
+}
+
+.card-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9mm;
+}
+
+.card-image {
+  aspect-ratio: 4 / 3;
+  width: 100%;
+  height: auto !important;
+  margin-bottom: 1.8mm;
+  overflow: hidden;
+}
+
+.card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.vn {
+  font-family: "Noto Sans", "Arial", "Tahoma", "DejaVu Sans", sans-serif;
+  font-variant-ligatures: none;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  line-height: 1.25;
+}
+
+@media screen and (max-width: 900px) and (orientation: portrait) {
+  .grid-2,
+  .grid-3 {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  .card {
+    min-height: auto !important;
+    padding: 10px !important;
+  }
+
+  .page {
+    padding: 12px !important;
+  }
+
+  .hero h1,
+  .page-title {
+    font-size: 22pt;
+  }
+
+  .hero p,
+  .page-subtitle {
+    font-size: 10pt;
+  }
+}
+
+@media screen and (max-width: 900px) and (orientation: landscape) {
+  .grid-2,
+  .grid-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  }
+
+  .card {
+    min-height: auto !important;
+    padding: 10px !important;
+  }
+
+  .page {
+    padding: 12px !important;
+  }
+
+  .hero,
+  .page-top {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  .hero-img {
+    width: min(100%, 300px) !important;
+  }
+}
+</style>
+
+</head>
+<body>
+<section class="page">
+<div class="hero">
+<div class="hero-copy">
+<div class="eyebrow">Куриная серия</div>
+<h1>Половина курицы</h1>
+<p>Подача по умолчанию: половина курицы</p>
+<div class="hero-note">Все вкусы также доступны как филе бедра, куриные ножки и крылья.</div>
+</div>
+<div class="hero-visual">
+<img alt="original" class="hero-img" src="images/GRTT.png"/>
+</div>
+</div>
+<div class="section-head">
+<div class="section-title">Доступные вкусы</div>
+<div class="section-subtitle">Цены за половину курицы</div>
+</div>
+<div class="grid grid-3">
+<div class="card">
+<div class="badge">Классика</div>
+<div class="card-image"><img alt="original" class="card-img" src="images/GRTT.png"/></div>
+<div class="card-text">
+<div class="eng">Классическая жареная курица</div>
+<div class="vn">Gà Rán Truyền Thống</div>
+<div class="price">180.000 VND</div>
+</div>
+</div>
+<div class="card">
+<div class="badge">Классика</div>
+<div class="card-image"><img alt="hot" class="card-img" src="images/GRGC.png"/></div>
+<div class="card-text">
+<div class="eng">Острая хрустящая жареная курица</div>
+<div class="vn">Gà Rán Giòn Cay</div>
+<div class="price">185.000 VND</div>
+</div>
+</div>
+<div class="card">
+<div class="badge">В соусе</div>
+<div class="card-image"><img alt="five" class="card-img" src="images/GRSNV.png"/></div>
+<div class="card-text">
+<div class="eng">Жареная курица с пятью специями</div>
+<div class="vn">Gà Rán Sốt Ngũ Vị</div>
+<div class="price">190.000 VND</div>
+</div>
+</div>
+<div class="card">
+<div class="badge">В соусе</div>
+<div class="card-image"><img alt="spicyfive" class="card-img" src="images/GRSNVC.png"/></div>
+<div class="card-text">
+<div class="eng">Острая жареная курица с пятью специями</div>
+<div class="vn">Gà Rán Sốt Ngũ Vị Cay</div>
+<div class="price">190.000 VND</div>
+</div>
+</div>
+<div class="card">
+<div class="badge">В соусе</div>
+<div class="card-image"><img alt="soy" class="card-img" src="images/GRSNT.png"/></div>
+<div class="card-text">
+<div class="eng">Жареная курица в соевом соусе</div>
+<div class="vn">Gà Rán Sốt Nước Tương</div>
+<div class="price">190.000 VND</div>
+</div>
+</div>
+<div class="card">
+<div class="badge">В посыпке</div>
+<div class="card-image"><img alt="ppuling" class="card-img" src="images/GRBP.png"/></div>
+<div class="card-text">
+<div class="eng">Жареная курица в сырной посыпке</div>
+<div class="vn">Gà Rán Rắc Bột Ppuling</div>
+<div class="price">190.000 VND</div>
+</div>
+</div>
+</div>
+</section>
+<section class="page">
+<div class="hero">
+<div class="hero-copy">
+<div class="eyebrow">Куриная серия</div>
+<h1>Филе бедра</h1>
+<p>Выберите вкус</p>
+<div class="hero-note">Филе бедра без кости. В порции 4-5 штук.</div>
+</div>
+<div class="hero-visual">
+<img alt="ppuling" class="hero-img" src="images/GRBP.png"/>
+</div>
+</div>
+<div class="section-head">
+<div class="section-title">Доступные вкусы</div>
+<div class="section-subtitle">Цены на филе бедра</div>
+</div>
+<div class="grid grid-3">
+<div class="card">
+<div class="badge">Классика</div>
+<div class="card-image"><img alt="original" class="card-img" src="images/GRTT.png"/></div>
+<div class="card-text">
+<div class="eng">Классические филе бедра</div>
+<div class="vn">Má Đùi Truyền Thống</div>
+<div class="price">140.000 VND</div>
+</div>
+</div>
+<div class="card">
+<div class="badge">Классика</div>
+<div class="card-image"><img alt="hot" class="card-img" src="images/GRGC.png"/></div>
+<div class="card-text">
+<div class="eng">Остро-хрустящие филе бедра</div>
+<div class="vn">Má Đùi Giòn Cay</div>
+<div class="price">150.000 VND</div>
+</div>
+</div>
+<div class="card">
+<div class="badge">В соусе</div>
+<div class="card-image"><img alt="five" class="card-img" src="images/GRSNV.png"/></div>
+<div class="card-text">
+<div class="eng">Филе бедра с пятью специями</div>
+<div class="vn">Má Đùi Sốt Ngũ Vị</div>
+<div class="price">150.000 VND</div>
+</div>
+</div>
+<div class="card">
+<div class="badge">В соусе</div>
+<div class="card-image"><img alt="spicyfive" class="card-img" src="images/GRSNVC.png"/></div>
+<div class="card-text">
+<div class="eng">Острые филе бедра с пятью специями</div>
+<div class="vn">Má Đùi Sốt Ngũ Vị Cay</div>
+<div class="price">150.000 VND</div>
+</div>
+</div>
+<div class="card">
+<div class="badge">В соусе</div>
+<div class="card-image"><img alt="soy" class="card-img" src="images/GRSNT.png"/></div>
+<div class="card-text">
+<div class="eng">Филе бедра в соевом соусе</div>
+<div class="vn">Má Đùi Sốt Nước Tương</div>
+<div class="price">150.000 VND</div>
+</div>
+</div>
+<div class="card">
+<div class="badge">В посыпке</div>
+<div class="card-image"><img alt="ppuling" class="card-img" src="images/GRBP.png"/></div>
+<div class="card-text">
+<div class="eng">Филе бедра в сырной посыпке</div>
+<div class="vn">Má Đùi Rắc Bột Ppuling</div>
+<div class="price">150.000 VND</div>
+</div>
+</div>
+</div>
+</section>
+<section class="page">
+<div class="hero">
+<div class="hero-copy">
+<div class="eyebrow">Куриная серия</div>
+<h1>Куриные ножки</h1>
+<p>Выберите вкус</p>
+<div class="hero-note">Куриные ножки на кости. В порции 4 ножки.</div>
+</div>
+<div class="hero-visual">
+<img alt="hot" class="hero-img" src="images/GRGC.png"/>
+</div>
+</div>
+<div class="section-head">
+<div class="section-title">Доступные вкусы</div>
+<div class="section-subtitle">Цены на куриные ножки</div>
+</div>
+<div class="grid grid-3">
+<div class="card">
+<div class="badge">Классика</div>
+<div class="card-image"><img alt="original" class="card-img" src="images/GRTT.png"/></div>
+<div class="card-text">
+<div class="eng">Классические куриные ножки</div>
+<div class="vn">Đùi Gà Truyền Thống</div>
+<div class="price">185.000 VND</div>
+</div>
+</div>
+<div class="card">
+<div class="badge">Классика</div>
+<div class="card-image"><img alt="hot" class="card-img" src="images/GRGC.png"/></div>
+<div class="card-text">
+<div class="eng">Остро-хрустящие куриные ножки</div>
+<div class="vn">Đùi Gà Giòn Cay</div>
+<div class="price">195.000 VND</div>
+</div>
+</div>
+<div class="card">
+<div class="badge">В соусе</div>
+<div class="card-image"><img alt="five" class="card-img" src="images/GRSNV.png"/></div>
+<div class="card-text">
+<div class="eng">Куриные ножки с пятью специями</div>
+<div class="vn">Đùi Gà Sốt Ngũ Vị</div>
+<div class="price">195.000 VND</div>
+</div>
+</div>
+<div class="card">
+<div class="badge">В соусе</div>
+<div class="card-image"><img alt="spicyfive" class="card-img" src="images/GRSNVC.png"/></div>
+<div class="card-text">
+<div class="eng">Острые куриные ножки с пятью специями</div>
+<div class="vn">Đùi Gà Sốt Ngũ Vị Cay</div>
+<div class="price">195.000 VND</div>
+</div>
+</div>
+<div class="card">
+<div class="badge">В соусе</div>
+<div class="card-image"><img alt="soy" class="card-img" src="images/GRSNT.png"/></div>
+<div class="card-text">
+<div class="eng">Куриные ножки в соевом соусе</div>
+<div class="vn">Đùi Gà Sốt Nước Tương</div>
+<div class="price">195.000 VND</div>
+</div>
+</div>
+<div class="card">
+<div class="badge">В посыпке</div>
+<div class="card-image"><img alt="ppuling" class="card-img" src="images/GRBP.png"/></div>
+<div class="card-text">
+<div class="eng">Куриные ножки в сырной посыпке</div>
+<div class="vn">Đùi Gà Rắc Bột Ppuling</div>
+<div class="price">195.000 VND</div>
+</div>
+</div>
+</div>
+</section>
+<section class="page">
+<div class="hero">
+<div class="hero-copy">
+<div class="eyebrow">Куриная серия</div>
+<h1>Крылья</h1>
+<p>Выберите вкус</p>
+<div class="hero-note">Хрустящие крылышки. В порции 6 цельных крылышек.</div>
+</div>
+<div class="hero-visual">
+<img alt="spicyfive" class="hero-img" src="images/GRSNVC.png"/>
+</div>
+</div>
+<div class="section-head">
+<div class="section-title">Доступные вкусы</div>
+<div class="section-subtitle">Цены на крылья</div>
+</div>
+<div class="grid grid-3">
+<div class="card">
+<div class="badge">Классика</div>
+<div class="card-image"><img alt="original" class="card-img" src="images/GRTT.png"/></div>
+<div class="card-text">
+<div class="eng">Классические крылышки</div>
+<div class="vn">Cánh Gà Truyền Thống</div>
+<div class="price">185.000 VND</div>
+</div>
+</div>
+<div class="card">
+<div class="badge">Классика</div>
+<div class="card-image"><img alt="hot" class="card-img" src="images/GRGC.png"/></div>
+<div class="card-text">
+<div class="eng">Остро-хрустящие крылышки</div>
+<div class="vn">Cánh Gà Giòn Cay</div>
+<div class="price">195.000 VND</div>
+</div>
+</div>
+<div class="card">
+<div class="badge">В соусе</div>
+<div class="card-image"><img alt="five" class="card-img" src="images/GRSNV.png"/></div>
+<div class="card-text">
+<div class="eng">Крылышки с пятью специями</div>
+<div class="vn">Cánh Gà Sốt Ngũ Vị</div>
+<div class="price">195.000 VND</div>
+</div>
+</div>
+<div class="card">
+<div class="badge">В соусе</div>
+<div class="card-image"><img alt="spicyfive" class="card-img" src="images/GRSNVC.png"/></div>
+<div class="card-text">
+<div class="eng">Острые крылышки с пятью специями</div>
+<div class="vn">Cánh Gà Sốt Ngũ Vị Cay</div>
+<div class="price">195.000 VND</div>
+</div>
+</div>
+<div class="card">
+<div class="badge">В соусе</div>
+<div class="card-image"><img alt="soy" class="card-img" src="images/GRSNT.png"/></div>
+<div class="card-text">
+<div class="eng">Крылышки в соевом соусе</div>
+<div class="vn">Cánh Gà Sốt Nước Tương</div>
+<div class="price">195.000 VND</div>
+</div>
+</div>
+<div class="card">
+<div class="badge">В посыпке</div>
+<div class="card-image"><img alt="ppuling" class="card-img" src="images/GRBP.png"/></div>
+<div class="card-text">
+<div class="eng">Крылышки в сырной посыпке</div>
+<div class="vn">Cánh Gà Rắc Bột Ppuling</div>
+<div class="price">195.000 VND</div>
+</div>
+</div>
+</div>
+</section>
+<section class="page">
+<div class="page-top">
+<div>
+<div class="page-kicker">Сытные блюда</div>
+<div class="page-title">Блюда</div>
+<div class="page-subtitle">Тёплые блюда, лапша и рагу.</div>
+<div class="page-note">Полноценный сытный приём пищи.</div>
+</div>
+<div class="page-hero-strip">
+<div class="small-hero"><img alt="meal_soup" class="small-hero-img" src="images/milanh.png"/></div>
+<div class="small-hero"><img alt="meal_soup" class="small-hero-img" src="images/Canh-Ga.png"/></div>
+<div class="small-hero"><img alt="meal_stew" class="small-hero-img" src="images/Ga-ham-andong.png"/></div>
+</div>
+</div>
+<div class="group-title">Лапша и рагу</div>
+<div class="grid grid-2">
+<div class="card">
+<div class="badge">Корейское</div>
+<div class="card-image"><img alt="meal_soup" class="card-img" src="images/milanh.png"/></div>
+<div class="card-text">
+<div class="eng">Холодная кимчи-лапша</div>
+<div class="vn">Mì Lạnh Kimchi</div>
+<div class="price">140.000 VND</div>
+</div>
+</div>
+<div class="card">
+<div class="badge">Суп</div>
+<div class="card-image"><img alt="meal_soup" class="card-img" src="images/Canh-Ga.png"/></div>
+<div class="card-text">
+<div class="eng">Куриный суп острый/ неострый</div>
+<div class="vn">Canh Gà Hầm Cay / Không Cay</div>
+<div class="price">60.000 VND</div>
+</div>
+</div>
+<div class="card">
+<div class="badge">Рагу</div>
+<div class="card-image"><img alt="meal_stew" class="card-img" src="images/Ga-ham-andong.png"/></div>
+<div class="card-text">
+<div class="eng">Куриное рагу по-андонгски</div>
+<div class="vn">Gà Hầm Andong</div>
+<div class="price">300.000 VND</div>
+</div>
+</div>
+<div class="card">
+<div class="badge">Рагу</div>
+<div class="card-image"><img alt="meal_stew" class="card-img" src="images/Ga-Ham-cay.png"/></div>
+<div class="card-text">
+<div class="eng">Острое тушёное куриное рагу</div>
+<div class="vn">Gà Hầm Cay</div>
+<div class="price">300.000 VND</div>
+</div>
+</div>
+</div>
+</section>
+<section class="page">
+<div class="page-top">
+<div>
+<div class="page-kicker">Рамён и ттокпокки</div>
+<div class="page-title">Рамён и ттокпокки</div>
+<div class="page-subtitle">Простые порции и закуски для компании.</div>
+<div class="page-note">Во все рамёны и ттокпокки можно добавить сыр.</div>
+</div>
+<div class="page-hero-strip">
+<div class="small-hero"><img alt="meal_soup" class="small-hero-img" src="images/Shin.png"/></div>
+<div class="small-hero"><img alt="meal_soup" class="small-hero-img" src="images/buldak.png"/></div>
+<div class="small-hero"><img alt="meal_stew" class="small-hero-img" src="images/tok.png"/></div>
+</div>
+</div>
+<div class="group-title">Рамён</div>
+<div class="grid grid-2">
+<div class="card">
+<div class="badge">Доп. сыр +25.000 VND</div>
+<div class="card-image"><img alt="meal_stew" class="card-img" src="images/Shin.png"/></div>
+<div class="card-text">
+<div class="eng">Рамён Shin / Jin (не острый)</div>
+<div class="vn">Mì Shin / Jin Ramen</div>
+<div class="price">70.000 VND</div>
+</div>
+</div>
+<div class="card">
+<div class="badge">Доп. сыр +25.000 VND</div>
+<div class="card-image"><img alt="meal_stew" class="card-img" src="images/mi-tuong-den.png"/></div>
+<div class="card-text">
+<div class="eng">Рамён Jajang</div>
+<div class="vn">Mì Tương Đen</div>
+<div class="price">80.000 VND</div>
+</div>
+</div>
+<div class="card">
+<div class="badge">Доп. сыр +25.000 VND</div>
+<div class="card-image"><img alt="meal_stew" class="card-img" src="images/buldak.png"/></div>
+<div class="card-text">
+<div class="eng">Рамён Buldak</div>
+<div class="vn">Mì Buldak</div>
+<div class="price">90.000 VND</div>
+</div>
+</div>
+</div>
+<div class="group-title">Ттокпокки</div>
+<div class="grid grid-2">
+<div class="card">
+<div class="badge">Доп. сыр +25.000 VND</div>
+<div class="card-image"><img alt="meal_stew" class="card-img" src="images/tok.png"/></div>
+<div class="card-text">
+<div class="eng">Ттокпокки (неострый / острый)</div>
+<div class="vn">Tteokbokki Không Cay / Cay</div>
+<div class="price">120.000 VND</div>
+</div>
+</div>
+</div>
+<div class="group-title">Дополнительно</div>
+<div class="grid grid-2">
+<div class="card">
+<div class="badge">Дополнительно</div>
+<div class="card-image"><img alt="meal_stew" class="card-img" src="images/com.png"/></div>
+<div class="card-text">
+<div class="eng">Рис</div>
+<div class="vn">Cơm</div>
+<div class="price">10.000 VND</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="page">
+<div class="page-top">
+<div>
+<div class="page-kicker">Закуски и гарниры</div>
+<div class="page-title">Закуски и гарниры</div>
+<div class="page-subtitle">Небольшие блюда, салаты и кимпаб.</div>
+<div class="page-note">Отлично подходит для компании или как дополнение к еде.</div>
+</div>
+<div class="page-hero-strip">
+<div class="small-hero"><img alt="skewers" class="small-hero-img" src="images/Kmini.png"/></div>
+<div class="small-hero"><img alt="pho" class="small-hero-img" src="images/Salad.png"/></div>
+<div class="small-hero"><img alt="chicken_rice" class="small-hero-img" src="images/Khoai.png"/></div>
+</div>
+</div>
+<div class="group-title">Вьетнамские и русские блюда</div>
+<div class="grid grid-2">
+<div class="card">
+<div class="badge">Мини</div>
+<div class="card-image"><img alt="meal_stew" class="card-img" src="images/Kmini.png"/></div>
+<div class="card-text">
+<div class="eng">Мини кимпаб</div>
+<div class="vn">с рыбным пирожком</div>
+<div class="price">50.000 VND / 3 ролла</div>
+</div>
+</div>
+<div class="card">
+<div class="badge">BBQ</div>
+<div class="card-image"><img alt="meal_stew" class="card-img" src="images/KBBQ.png"/></div>
+<div class="card-text">
+<div class="eng">Кимпаб BBQ</div>
+<div class="vn">со свиной грудинкой</div>
+<div class="price">70.000 VND / 3 ролла</div>
+</div>
+</div>
+<div class="card">
+<div class="badge">Суп</div>
+<div class="card-image"><img alt="meal_stew" class="card-img" src="images/banh-ca.png"/></div>
+<div class="card-text">
+<div class="eng">Рыбный пирог</div>
+<div class="vn">Canh bánh cá</div>
+<div class="price">70.000 VND / 5 спажек</div>
+</div>
+</div>
+<div class="card">
+<div class="badge">Салат</div>
+<div class="card-image"><img alt="meal_stew" class="card-img" src="images/salad-tron.png"/></div>
+<div class="card-text">
+<div class="eng">Капустный салат с майонезной заправкой</div>
+<div class="vn">Salad trộn</div>
+<div class="price">20.000 VND</div>
+</div>
+</div>
+<div class="card">
+<div class="badge">Гарнир</div>
+<div class="card-image"><img alt="meal_stew" class="card-img" src="images/Khoai.png"/></div>
+<div class="card-text">
+<div class="eng">Картофель фри</div>
+<div class="vn">Khoai tây chiên</div>
+<div class="price">50.000 VND</div>
+</div>
+</div>
+<div class="card">
+<div class="badge">Рис</div>
+<div class="card-image"><img alt="meal_stew" class="card-img" src="images/CCKC.png"/></div>
+<div class="card-text">
+<div class="eng">Жареный рис с кимчи и свининой</div>
+<div class="vn">Cơm Chiên Kimchi Thịt Heo</div>
+<div class="price">120.000 VND</div>
+</div>
+</div>
+<div class="card">
+<div class="badge">Свежий</div>
+<div class="card-image"><img alt="meal_stew" class="card-img" src="images/Salad.png"/></div>
+<div class="card-text">
+<div class="eng">Овощной салат</div>
+<div class="vn">Salad Rau Tươi</div>
+<div class="price">30.000 VND</div>
+</div>
+</div>
+</div>
+</section>
+<section class="page">
+<div class="page-top">
+<div>
+<div class="page-kicker">Основные блюда</div>
+<div class="page-title">Основные блюда</div>
+<div class="page-subtitle">Вьетнамские, русские, блюда из морепродуктов и жареные блюда.</div>
+<div class="page-note">Более широкий выбор для обеда и ужина.</div>
+</div>
+<div class="page-hero-strip">
+<div class="small-hero"><img alt="skewers" class="small-hero-img" src="images/shash.png"/></div>
+<div class="small-hero"><img alt="pho" class="small-hero-img" src="images/pho.png"/></div>
+<div class="small-hero"><img alt="chicken_rice" class="small-hero-img" src="images/bun-cha.png"/></div>
+</div>
+</div>
+<div class="group-title">Вьетнамская кухня</div>
+<div class="grid grid-2">
+<div class="card">
+<div class="badge">Фо</div>
+<div class="card-image"><img alt="meal_stew" class="card-img" src="images/pho.png"/></div>
+<div class="card-text">
+<div class="eng">Вьетнамский фо с говядиной</div>
+<div class="vn">Phở Bò Việt Nam</div>
+<div class="price">45.000 VND</div>
+</div>
+</div>
+<div class="card">
+<div class="badge">Рис</div>
+<div class="card-image"><img alt="meal_stew" class="card-img" src="images/com-ga.png"/></div>
+<div class="card-text">
+<div class="eng">Рис с курицей</div>
+<div class="vn">Cơm Gà</div>
+<div class="price">50.000 VND</div>
+</div>
+</div>
+<div class="card">
+<div class="badge">Лапша</div>
+<div class="card-image"><img alt="meal_stew" class="card-img" src="images/bun-nem.png"/></div>
+<div class="card-text">
+<div class="eng">Бун нем по-ханойски</div>
+<div class="vn">Bún Nem Rán Hà Nội</div>
+<div class="price">50.000 VND</div>
+</div>
+</div>
+<div class="card">
+<div class="badge">Лапша</div>
+<div class="card-image"><img alt="meal_stew" class="card-img" src="images/bun-cha.png"/></div>
+<div class="card-text">
+<div class="eng">Бун ча</div>
+<div class="vn">Bún Chả</div>
+<div class="price">50.000 VND</div>
+</div>
+</div>
+<div class="card">
+<div class="badge">От 3 штук</div>
+<div class="card-image"><img alt="meal_stew" class="card-img" src="images/nem.png"/></div>
+<div class="card-text">
+<div class="eng">Ханойские жареные спринг-роллы</div>
+<div class="vn">Nem Rán Hà Nội</div>
+<div class="price">10.000 VND / 1 piece</div>
+</div>
+</div>
+</div>
+<div class="group-title">Русская кухня</div>
+<div class="grid grid-2">
+<div class="card">
+<div class="badge">Пельмени</div>
+<div class="card-image"><img alt="meal_stew" class="card-img" src="images/pelmeni.png"/></div>
+<div class="card-text">
+<div class="eng">Пельмени</div>
+<div class="vn">Sủi Cảo Nga</div>
+<div class="price">70.000 VND</div>
+</div>
+</div>
+<div class="card">
+<div class="badge">Гриль</div>
+<div class="card-image"><img alt="meal_stew" class="card-img" src="images/shash.png"/></div>
+<div class="card-text">
+<div class="eng">Шашлык из свинины</div>
+<div class="vn">Thịt Xiên Nướng Kiểu Nga</div>
+<div class="price">135.000 VND</div>
+</div>
+</div>
+<div class="card">
+<div class="badge">Суп</div>
+<div class="card-image"><img alt="meal_stew" class="card-img" src="images/borsh.png"/></div>
+<div class="card-text">
+<div class="eng">Борщ</div>
+<div class="vn">Súp Củ Dền Nga</div>
+<div class="price">60.000 VND</div>
+</div>
+</div>
+</div>
+<div class="group-title">Рыба и морепродукты</div>
+<div class="grid grid-2">
+<div class="card">
+<div class="badge">Рыба</div>
+<div class="card-image"><img alt="meal_stew" class="card-img" src="images/ca.png"/></div>
+<div class="card-text">
+<div class="eng">Жареная рыба в томатном соусе</div>
+<div class="vn">Cá Chiên Sốt Cà Chua</div>
+<div class="price">140.000 VND</div>
+</div>
+</div>
+<div class="card">
+<div class="badge">Темпура</div>
+<div class="card-image"><img alt="meal_stew" class="card-img" src="images/Tom.png"/></div>
+<div class="card-text">
+<div class="eng">Темпура из креветок</div>
+<div class="vn">Tôm Chiên Tempura</div>
+<div class="price">150.000 VND</div>
+</div>
+</div>
+<div class="card">
+<div class="badge">Морепродукты</div>
+<div class="card-image"><img alt="meal_stew" class="card-img" src="images/CCHS.png"/></div>
+<div class="card-text">
+<div class="eng">Жареный рис с морепродуктами</div>
+<div class="vn">Cơm Chiên Hải Sản</div>
+<div class="price">100.000 VND</div>
+</div>
+</div>
+<div class="card">
+<div class="badge">Морепродукты</div>
+<div class="card-image"><img alt="meal_stew" class="card-img" src="images/MXHS.png"/></div>
+<div class="card-text">
+<div class="eng">Лапша с морепродуктами</div>
+<div class="vn">Mỳ Xào Hải Sản</div>
+<div class="price">120.000 VND</div>
+</div>
+</div>
+</div>
+</section>
+<section class="page">
+<div class="page-top">
+<div>
+<div class="page-kicker">Холодные напитки и бутылки</div>
+<div class="page-title">Напитки</div>
+<div class="page-subtitle">Газировка, вода, пиво, крепкие напитки и соки.</div>
+<div class="page-note">Объёмы бутылок и цены за позицию указаны ниже.</div>
+</div>
+<div class="page-hero-strip">
+<div class="small-hero"><img alt="meal_soup" class="small-hero-img" src="images/coca.png"/></div>
+<div class="small-hero"><img alt="meal_stew" class="small-hero-img" src="images/bia-saigon-lon.png"/></div>
+<div class="small-hero"><img alt="meal_soup" class="small-hero-img" src="images/soju.png"/></div>
+</div>
+</div>
+<div class="group-title">Безалкогольные напитки</div>
+<div class="grid grid-2">
+<div class="card">
+<div class="badge">Безалк.</div>
+<div class="card-image"><img alt="meal_stew" class="card-img" src="images/coca.png"/></div>
+<div class="card-text">
+<div class="eng">Спрайт / Кока-Кола</div>
+<div class="vn"></div>
+<div class="price">20.000 VND / 1 bottle</div>
+</div>
+</div>
+<div class="card">
+<div class="badge">Вода</div>
+<div class="card-image"><img alt="meal_stew" class="card-img" src="images/nuoc.png"/></div>
+<div class="card-text">
+<div class="eng">Вода</div>
+<div class="vn">Nước suối</div>
+<div class="price">10.000 VND / 1 bottle</div>
+</div>
+</div>
+<div class="card">
+<div class="badge">Свежий</div>
+<div class="card-image"><img alt="meal_stew" class="card-img" src="images/coconut.png"/></div>
+<div class="card-text">
+<div class="eng">Свежий кокос</div>
+<div class="vn">Dừa Tươi</div>
+<div class="price">30.000 VND</div>
+</div>
+</div>
+<div class="card">
+<div class="badge">Сок</div>
+<div class="card-image"><img alt="meal_stew" class="card-img" src="images/cam.png"/></div>
+<div class="card-text">
+<div class="eng">Апельсиновый сок</div>
+<div class="vn">Cam ép</div>
+<div class="price">30.000 VND</div>
+</div>
+</div>
+<div class="card">
+<div class="badge">Смузи</div>
+<div class="card-image"><img alt="meal_stew" class="card-img" src="images/xoai.png"/></div>
+<div class="card-text">
+<div class="eng">Манговый смузи</div>
+<div class="vn">Sinh Tố Xoài</div>
+<div class="price">30.000 VND</div>
+</div>
+</div>
+<div class="card">
+<div class="badge">Сок</div>
+<div class="card-image"><img alt="meal_stew" class="card-img" src="images/dua.png"/></div>
+<div class="card-text">
+<div class="eng">Арбузный сок</div>
+<div class="vn">Nước ép dưa hấu</div>
+<div class="price">30.000 VND</div>
+</div>
+</div>
+<div class="card">
+<div class="badge">Сок</div>
+<div class="card-image"><img alt="meal_stew" class="card-img" src="images/thom.png"/></div>
+<div class="card-text">
+<div class="eng">Ананасовый сок</div>
+<div class="vn">Nước Ép Thơm</div>
+<div class="price">40.000 VND</div>
+</div>
+</div>
+</div>
+<div class="group-title">Алкоголь</div>
+<div class="grid grid-2">
+<div class="card">
+<div class="badge">Пиво</div>
+<div class="card-image"><img alt="meal_stew" class="card-img" src="images/bia-saigon-lon.png"/></div>
+<div class="card-text">
+<div class="eng">Пиво Saigon 0,33</div>
+<div class="vn"></div>
+<div class="price">30.000 VND / 1 банка</div>
+</div>
+</div>
+<div class="card">
+<div class="badge">Пиво</div>
+<div class="card-image"><img alt="meal_stew" class="card-img" src="images/tiger.png"/></div>
+<div class="card-text">
+<div class="eng">Пиво Tiger 0,33</div>
+<div class="vn"></div>
+<div class="price">15.000 VND / 1 банка</div>
+</div>
+</div>
+<div class="card">
+<div class="badge">Пиво</div>
+<div class="card-image"><img alt="meal_stew" class="card-img" src="images/bia.png"/></div>
+<div class="card-text">
+<div class="eng">Пиво Saigon 0,45 (только на месте)</div>
+<div class="vn"></div>
+<div class="price">15.000 VND / 1 бутылка</div>
+</div>
+</div>
+<div class="card">
+<div class="badge">Соджу</div>
+<div class="card-image"><img alt="meal_stew" class="card-img" src="images/soju.png"/></div>
+<div class="card-text">
+<div class="eng">Соджу</div>
+<div class="vn">Soju</div>
+<div class="price">120.000 VND / 1 bottle</div>
+</div>
+</div>
+<div class="card">
+<div class="badge">Водка</div>
+<div class="card-image"><img alt="meal_stew" class="card-img" src="images/vodka.png"/></div>
+<div class="card-text">
+<div class="eng">Водка Men 300 мл</div>
+<div class="vn">Vodka Men 300 ml</div>
+<div class="price">90.000 VND</div>
+</div>
+</div>
+<div class="card">
+<div class="badge">Водка</div>
+<div class="card-image"><img alt="meal_stew" class="card-img" src="images/vodka.png"/></div>
+<div class="card-text">
+<div class="eng">Водка Men 500 мл</div>
+<div class="vn">Vodka Men 500 ml</div>
+<div class="price">140.000 VND</div>
+</div>
+</div>
+</div>
+</section>
+</body>
+</html>
