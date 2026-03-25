@@ -460,10 +460,31 @@ body {
     width: min(100%, 300px) !important;
   }
 }
+.back-btn{
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  z-index: 9999;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 14px;
+  border-radius: 999px;
+  background: #b98b2a;
+  color: #fff;
+  text-decoration: none;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  box-shadow: 0 6px 16px rgba(0,0,0,.18);
+}
+.back-btn:active{
+  transform: scale(0.98);
+}
 </style>
 
 </head>
-<body>
+<body><a class="back-btn" href="index.html">← Назад</a>
 <section class="page">
 <div class="hero">
 <div class="hero-copy">
